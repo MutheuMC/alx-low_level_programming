@@ -1,25 +1,25 @@
 #include "main.h"
 
 /**
- * print_square - print square of '#' givven size
- * @size: size to drwa
- *
+ * print_square - prints a square for a given number using #
+ * @size: param
+ * Return: void
  */
 void print_square(int size)
 {
-	int row, column;
+	int h, w;
 
 	if (size > 0)
 	{
-		for (row = 1; row <= size; row++)
+		for (h = 0; h < size; h++)
 		{
-			for (column = 1; column <= size; column++)
-			{
+			for (w = 0; w < size; w++)
 				_putchar('#');
-			}
+
+			if (h == size - 1)
+				continue;
 			_putchar('\n');
 		}
-	}else
-		_putchar('\n');
+	}
+	_putchar('\n');
 }
-

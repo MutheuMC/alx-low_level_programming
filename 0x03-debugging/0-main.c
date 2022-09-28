@@ -1,21 +1,13 @@
 #include "main.h"
-
-/*
- * main- tests function that prints integer if positive or negative
- *
- * Description: Tests function
- *
+/**
+ * main - debugging
  * Return: 0
- *
  */
 int main(void)
 {
-	int i,
+	int i;
 
-	i = 98;
+	i = 0;
 	positive_or_negative(i);
-
 	return (0);
-
 }
-

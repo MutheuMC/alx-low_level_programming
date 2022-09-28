@@ -1,13 +1,11 @@
 #include "main.h"
-#include<stdio.h>
+#include <stdio.h>
 
 /**
- * main- prints numbers from given n to 98 , inoredre
- *
- * Description: function to print numbers
- *
- * Return:void
- *
+ * print_to_98 - prints numbers from given n to 98, inorder
+ * separated by a comma, followed by a new line
+ * @n: parameter
+ * Return: void
  */
 void print_to_98(int n)
 {
@@ -17,6 +15,7 @@ void print_to_98(int n)
 		{
 			printf("%d, ", n--);
 		}
+
 		printf("%d\n", n);
 	}
 	else

@@ -1,28 +1,29 @@
 #include "main.h"
 
 /**
- * print_diagonal - print character "\" n times
+ * print_diagonal - prints diagonal line
  *
- * @n: numberr of characers to draw
- *
+ * @n: param
  */
+
 void print_diagonal(int n)
 {
-	int draw;
-	int space;
+	int len, space;
 
 	if (n > 0)
 	{
-		for (draw = 1; draw <= n; draw++)
+		for (len = 0; len < n; len++)
 		{
-			for (space = 1; space < draw; space++)
+			for (space = 0; space < len; space++)
 				_putchar(' ');
 			_putchar('\\');
+
+			if (len == n - 1)
+				continue;
+
 			_putchar('\n');
+
 		}
 	}
-	else
-
-		_putchar('\n');
+	_putchar('\n');
 }
-

@@ -1,30 +1,40 @@
-#include "main.h"
+#include <stdio.h>
+
 /**
- * main- prints 1 to 100
- *
- * Description: mulplies of 3 prin fizzz
- * of 5 buzz
- * return : 0 success
- *
+ * main - entry
+ * Description: Write a program that prints the numbers from 1 to 100,
+ * followed by a new line.
+ * Return: 0 (Success)
  */
 int main(void)
 {
-	int i;
+	int i = 1;
 
-	for (i = 1; i <= 100; i++)
+	while (i <= 100)
 	{
-		if (i % 15 == 0 )
-			printf("FizzBuzz");;
-		else if (i % 5 == 0)
-			printf("Buzz");
+		if (i % 3 == 0 && i % 5 == 0)
+		{
+			printf("FizzBuzz");
+		}
 		else if (i % 3 == 0)
+		{
 			printf("Fizz");
+		}
+		else if (i % 5 == 0)
+		{
+			printf("Buzz");
+		}
 		else
-			printf("%d", i);
+		{
+			printf("%i", i);
+		}
+		if (i != 100)
+		{
+			putchar(' ');
+		}
 
-		if (i < 100)
-			printf(" ");
+		i++;
 	}
-	printf("\n");
+	putchar('\n');
 	return (0);
 }
