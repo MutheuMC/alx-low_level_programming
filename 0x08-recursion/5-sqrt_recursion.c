@@ -1,4 +1,4 @@
-#include "main.h"
+#include "holberton.h"
 /**
   *helperFunction - checks if sqrt of number exists
   *@num: number.
