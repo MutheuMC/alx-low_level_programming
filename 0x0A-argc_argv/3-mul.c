@@ -1,32 +1,31 @@
-#include<stdio.h>
-#include<stdlib.h>
-
+#include <stdio.h>
+#include <stdlib.h>
 /**
- * main - Prints mutiplication
- *
- * @argc: arg count
- * @argv: array of strings
- *
- * Return: Always success
- * 0 return 1 if argc <2
- */
-int main(int argc, char **argv)
+  *main - prints result of multiplication followed by a new line.
+  *@argc: number of arguments passed.
+  *@argv: array of size argc containing arguments passed.
+  *
+  *Return: 0 on success.
+  *1 on error.
+  */
+int main(int argc, char *argv[])
 {
-	int i;
-	int mul = 1;
+	int count, product;
 
-	if (argc <= 2)
+	product = 1;
+	if (argc == 3)
 	{
-		printf(" Error\n");
-		return (1);
+		for (count = 1; count < argc; count++)
+		{
+			product *= atoi(argv[count]);
+		}
+		printf("%d\n", product);
 	}
 	else
 	{
-		for (i = 1; i < argc; i++)
-		{
-			mul = mul * atoi(argv[i]);
-		}
-		printf("Multiplication = %d\n", mul);
-		return (0);
+		printf("Error\n");
+		return (1);
 	}
+
+	return (0);
 }
