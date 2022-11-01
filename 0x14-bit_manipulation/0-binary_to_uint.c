@@ -1,73 +1,70 @@
 #include "holberton.h"
-/**
-  *_strlen - returns the length of a string.
-  *@s: pointer to string.
-  *
-  *Return: length.
-  */
-unsigned int _strlen(const char *s)
-{
-	unsigned int i;
-
-	i = 0;
-	while (s[i] != '\0')
-	{
-		i++;
-	}
-	return (i);
-}
 
 /**
-  *getp - returns the value of x to the power of y.
-  *@x: number.
-  *@y: power.
-  *
-  *Return: x to the pow of y.
-  *0 if x < 0.
-  */
-int getp(int x, int y)
-{
-	if (y < 0)
-		return (0);
-	if (y == 0)
-		return (1);
-	if (y == 1)
-		return (x);
-
-	return (x * getp(x, y - 1));
-}
-
-/**
-  *binary_to_uint - converts a binary number to an unsigned int.
-  *@b: pointer to string containing 0 and 1.
-  *
-  *Return: converted number or 0 if b is null or has chars not 0 or 1.
-  */
+ * binary_to_uint - convert binary to unsigned int
+ * @b: binary
+ * Return: unsigned int
+ */
 unsigned int binary_to_uint(const char *b)
 {
-	unsigned int num, length, index;
-	int power;
 
-	if (!b)
-		return (0);
+	int len = 0, i;
+	unsigned int sum = 0;
 
-	length = _strlen(b);
-	power = 0;
-	num = 0;
-	index = length - 1;
-	while (length > 0)
+	if (b == NULL)
+		return (sum);
+
+	/* find string length */
+	while (b[len] != '\0')
+		len++;
+	len -= 1;
+
+	/* iterate string and if '1' then multiply by power of 2 */
+	/* get power of 2 via binary (e.g. 1<<2 = 100 in binary = 4) */
+	i = 0;
+	while (b[i])
 	{
-		if (b[index] == 48 || b[index] == 49)
-		{
-			num = num + ((b[index] - 48) * getp(2, power));
-			power++;
-			index--;
-			length--;
-		}
-		else
-		{
-			return (0);
-		}
+		if ((b[i] != '0') && (b[i] != '1'))
+			return (sum);
+
+		if (b[i] == '1')
+			sum += (1 * (1 << len));
+		i++;
+		len--;
 	}
-	return (num);
+
+	return (sum);
 }
+
+/*
+ * alternative method not using bitwise but a power of 2
+ *
+ *
+ * unsigned int binary_to_uint(const char *b)
+ *{
+ *
+ *	int len = 0, pow = 1;
+ *	unsigned int sum = 0, error = 0;
+ *
+ *	if (b == NULL)
+ *		return (error);
+ *
+ *	while (b[len] != '\0') // find string length
+ *		len++;
+ *	len -= 1;
+ *
+ *	while (len >= 0) // iterate from back of string
+ *	{
+ *		if ((b[len] != '0') && (b[len] != '1'))
+ *			return (error);
+ *
+ *		if (b[len] == '1') // add appropriate power of 2 if '1'
+ *			sum += pow;
+ *
+ *		pow *= 2; // update power of 2
+ *		len--;
+ *	}
+ *
+ *	return (sum);
+ *}
+ */

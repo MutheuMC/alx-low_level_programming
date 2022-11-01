@@ -1,49 +1,29 @@
-# 0x14-bit_manipulation
+## Bit Manipulation
+> Each file in this repository holds code that illustrates an essential concept of programming,
+> specific to the C programming language:
+> how to manipulate bits via switiching them on and off, getting them, and printing to/from binary
 
-## 0-binary_to_uint.c
-> A function that converts a binary number to an unsigned int.
-> - Prototype: ``` unsigned int binary_to_uint(const char *b); ```.
-> - ``` b ``` is pointing to a string of ``` 0 ``` and ``` 1 ``` chars.
-> - Returns the converted number or 0: 
-> * if theres one or more chars in the string ``` b ``` that is not ``` 0 ``` or ``` 1 ```.
-> * ``` b ``` is ``` NULL ```.
+### Description of what each file shows:
+* main_test_files ----- folder holds test files that showcase examples of how to use functions
+* holberton.h ---------- holds files' function prototypes
+* Files that start with:
+0. a function that converts a binary number to an unsigned int
+1. a function that prints the binary of a number without using / or %
+2. a function that returns the value of a bit at a given index
+3. a function that sets the value of a bit to 1 at a given index
+4. a function that sets the value of a bit to 0 at a given index
+5. a function that returns the number of bits you would need to flip to get from one number to another
+6. a function that checks for big endian and little endian
 
-## 1-print_binary.c
-> A function that prints the binary representation of a number.
-> - Prototype: ``` void print_binary(unsigned long int n); ```.
-> - Using Bitwise AND.
+### Environment
+* Language: C
+* OS: Ubuntu 14.04 LTS
+* Compiler: gcc 4.8.4
+* Style guidelines: [Betty style](https://github.com/holbertonschool/Betty/wiki)
 
-## 2-get_bit.c
-> A function that returns the value of a bit at a given index.
-> - Prototype: ``` int get_bit(unsigned long int n, unsigned int index); ```.
-> - ``` index ``` is the index starting from ``` 0 ``` of the bit you want to get.
-> - Returns the value of the bit at ``` index ``` or ``` -1 ``` if an error occured.
+---
+### Authors
+Melissa Ng [![M](https://upload.wikimedia.org/wikipedia/fr/thumb/c/c8/Twitter_Bird.svg/30px-Twitter_Bird.svg.png)](https://twitter.com/MelissaNg__)
 
-## 3-get_bit.c
-> A function that sets the value of a bit to ``` 1 ``` at a given index.
-> - Prototype: ``` int set_bit(unsigned long int *n, unsigned int index); ```.
-> - ``` index ``` is the index starting from ``` 0 ``` of the bit you want to set.
-> - Returns ``` 1 ``` if it worked and ``` -1 ``` if an error occured.
-
-## 4-clear_bit.c
->  A function that sets the value of a bit to ``` 0 ``` at a given index.
-> - Prototype: ``` int clear_bit(unsigned long int *n, unsigned int index); ```.
-> - ``` index ``` is the index starting from ``` 0 ``` of the bit you want to set.
-> - Returns ``` 1 ``` if it worked and ``` -1 ``` if an error occured.
-
-## 5-flip_bits.c
-> A function that returns the number of bits you would need to flip to get from one number to
-another.
-> - Prototype: ``` unsigned int flip_bits(unsigned long int n, unsigned long int m); ```.
-
-## 100-get_endianess.c
-> A function that checks the endianness.
-> - Prototype: ``` int get_endianness(void); ```.
-> - Returns ``` 0 ``` if big endian, ``` 1 ``` if little endian.
-
-## 101-password
-> A file that contains the password for the [crackme3](https://github.com/holbertonschool/0x13.c) program.
-
-## holberton.h
-> Header file contains all function prototypes of functions in this project.
-
+### License
+ [![M](https://www.holbertonschool.com/holberton-logo-simple-200s.png)](https://www.holbertonschool.com)
