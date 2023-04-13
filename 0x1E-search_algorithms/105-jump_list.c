@@ -1,63 +1,50 @@
-#include <stdio.h>
-#include <math.h>
+/*
+ * File: 105-jump_list.c
+ * Auth: Yosef Samuel
+ */
+
 #include "search_algos.h"
 
 /**
- * linear_list - perform a linear search on a linked list
- * @list: pointer to the first node to search from
- * @value: value to search for
+ * jump_list - Searches for an algorithm in a sorted singly
+ *             linked list of integers using jump search.
+ * @list: A pointer to the  head of the linked list to search.
+ * @size: The number of nodes in the list.
+ * @value: The value to search for.
  *
- * Return: pointer to the first node wher value is located, or NULL
- */
-listint_t *linear_list(listint_t *list, int value)
-{
-	while (list != NULL)
-	{
-		if (list->n > value)
-			break;
-		printf("Value checked at index [%lu] = [%d]\n",
-		       list->index, list->n);
-		if (list->n == value)
-			return (list);
-		list = list->next;
-	}
-	return (NULL);
-}
-
-
-/**
- * jump_list - Searches for a value in a sorted linked list of integers using
- *             the Jump Search Algorithm
- * @list: pointer to the head of the linked list to search in
- * @size: number of nodes in the linked list
- * @value: Value to search for
+ * Return: If the value is not present or the head of the list is NULL, NULL.
+ *         Otherwise, a pointer to the first node where the value is located.
  *
- * Return: pointer to the first node where value is lovated, else NULL
+ * Description: Prints a value every time it is compared in the list.
+ *              Uses the square root of the list size as the jump step.
  */
 listint_t *jump_list(listint_t *list, size_t size, int value)
 {
-	size_t root = sqrt(size), idx = 0;
-	listint_t *temp = list, *prev = NULL;
+	size_t step, step_size;
+	listint_t *node, *jump;
 
-	if (list == NULL || size < 1)
+	if (list == NULL || size == 0)
 		return (NULL);
 
-	while (temp->n < value && temp->index < size)
+	step = 0;
+	step_size = sqrt(size);
+	for (node = jump = list; jump->index + 1 < size && jump->n < value;)
 	{
-		prev = temp;
-		for (idx = 0; idx < root && temp->next != NULL; idx++)
-			temp = temp->next;
-		printf("Value checked at index [%lu] = [%d]\n",
-		       temp->index, temp->n);
-		if (temp->next == NULL)
-			break;
+		node = jump;
+		for (step += step_size; jump->index < step; jump = jump->next)
+		{
+			if (jump->index + 1 == size)
+				break;
+		}
+		printf("Value checked at index [%ld] = [%d]\n", jump->index, jump->n);
 	}
-	if (temp->n >= value || temp->next == NULL)
-	{
-		printf("Value found between indexes [%lu] and [%lu]\n",
-		       prev->index, temp->index);
-		temp = linear_list(prev, value);
-		return (temp);
-	}
-	return (NULL);
+
+	printf("Value found between indexes [%ld] and [%ld]\n",
+	       node->index, jump->index);
+
+	for (; node->index < jump->index && node->n < value; node = node->next)
+		printf("Value checked at index [%ld] = [%d]\n", node->index, node->n);
+	printf("Value checked at index [%ld] = [%d]\n", node->index, node->n);
+
+	return (node->n == value ? node : NULL);
 }
