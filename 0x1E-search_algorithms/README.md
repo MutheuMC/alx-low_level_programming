@@ -1,0 +1,1 @@
+Search alogirthms are designed to solve search problems.They work to retrieve information stored within particular data structure or calculated in teh search space of a problem domain with either discrete or continous values
